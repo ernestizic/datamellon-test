@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f0f0f0;
 }
 
 code {
@@ -12,3 +13,24 @@ code {
     monospace;
 }
 
+.bar{
+  background-color: #fff;
+  padding: 10px;
+  border: 10px solid #f0f0f0;
+}
+.pie{
+  background-color: #fff;
+  padding: 10px;
+  border: 10px solid #f0f0f0;
+}
+header{
+  background-color: #fff;
+  padding: 12px;
+}
+h2{
+  text-align: center;
+}
+.loading{
+  text-align: center;
+  padding: 60px;
+}
