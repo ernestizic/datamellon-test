@@ -2,7 +2,18 @@ import React from "react";
 import Barchart from "./Barchart";
 import Piechart from "./Piechart";
 
-const Dashboard = ({ chartData, isLoading, salesData }) => {
+const Dashboard = ({
+  chartData,
+  isLoading,
+  currentData,
+  nextPage,
+  prevPage,
+  filterProducts
+}) => {
+
+  const handleChange = (e) => {
+    filterProducts(e)
+  };
   return (
     <div className='chart-list'>
       <header>
@@ -26,7 +37,20 @@ const Dashboard = ({ chartData, isLoading, salesData }) => {
           </div>
 
           <div className='table-div'>
-            <table className='table'>
+            <div className='filter-div'>
+              Filter By Category: {}
+              <select
+                name='products'
+                onChange={(e) => handleChange(e.target.value)}
+              >
+                <option value='all'>All</option>
+                <option value='Technology'>Technology</option>
+                <option value='Furniture'>Furniture</option>
+                <option value='Office Supplies'>Office Supplies</option>
+              </select>
+            </div>
+
+            <table className='table table-striped'>
               <thead>
                 <tr>
                   <th>#</th>
@@ -38,18 +62,26 @@ const Dashboard = ({ chartData, isLoading, salesData }) => {
                 </tr>
               </thead>
               <tbody>
-                {salesData.map((item)=> (
-                  <tr key={item['Order ID']}>
-                    <td>{item['Row ID']}</td>
+                {currentData.map((item) => (
+                  <tr key={item["Order ID"]}>
+                    <td>{item["Row ID"]}</td>
                     <td>{item.Country}</td>
                     <td>{item.Category}</td>
-                    <td>{item['Product Name']}</td>
+                    <td>{item["Product Name"]}</td>
                     <td>{item.Quantity}</td>
                     <td>{item.Profit}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            <div className='buttons'>
+              <button onClick={prevPage} className='prev'>
+                Prev
+              </button>
+              <button onClick={nextPage} className='next'>
+                Next
+              </button>
+            </div>
           </div>
         </div>
       )}
