@@ -3,7 +3,7 @@ import { Pie } from "react-chartjs-2";
 
 const Piechart = ({ chartData }) => {
   return (
-    <div className='piechart' style={{ maxWidth: "100%" }}>
+    <div className='piechart'>
       <Pie
         data={chartData}
         options={{}}

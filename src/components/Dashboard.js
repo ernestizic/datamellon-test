@@ -1,5 +1,6 @@
 import React from "react";
 import Barchart from "./Barchart";
+import Linechart from "./Linechart";
 import Piechart from "./Piechart";
 
 const Dashboard = ({
@@ -8,7 +9,8 @@ const Dashboard = ({
   currentData,
   nextPage,
   prevPage,
-  filterProducts
+  filterProducts,
+  linechartdata
 }) => {
 
   const handleChange = (e) => {
@@ -34,6 +36,10 @@ const Dashboard = ({
             <div className='col-md-6 pie'>
               <Piechart chartData={chartData} />
             </div>
+          </div>
+
+          <div className='container linechart-div'>
+            <Linechart linechartdata={linechartdata} />
           </div>
 
           <div className='table-div'>

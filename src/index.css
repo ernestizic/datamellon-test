@@ -21,8 +21,9 @@ body {
   border: 10px solid #f0f0f0;
 }
 header{
-  background-color: #fff;
+  background-color: #000;
   padding: 12px;
+  color: #fff
 }
 h2{
   text-align: center;

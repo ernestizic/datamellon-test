@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2";
 
 const Barchart = ({chartData}) => {
   return (
-    <div className='barchart' style={{maxWidth: '100%'}}>
+    <div className='barchart'>
       <Bar
         data={chartData}
         options={{  }}

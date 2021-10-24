@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard";
 
-import Barchart from "./components/Barchart";
-import { cleanup } from "@testing-library/react";
-
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [salesData, setSalesData] = useState([]);
@@ -54,8 +51,13 @@ function App() {
   const tech = salesData.filter((sales) => sales.Category === "Technology");
   const techLen = tech.length;
 
+  // const xdata = salesData.map(sales => sales['Order Date'])
+
+  // const ydata = salesData.map(sales => sales['Profit'])
 
 
+
+  ///////////// useEffect  /////////////////////
   useEffect(() => {
     fetchSalesData();
 
@@ -74,16 +76,37 @@ function App() {
         },
       ],
     });
-    return () => {
-      cleanup();
-    };
+
   }, [furLen, offLen, techLen]);
 
   useEffect(() => {
     setSalesDataCopy(salesData)
   }, [salesData])
+  
+// ///////////////////////////////////////////////////
+
+
+  // const linechartdata = {
+  //   // console.log(xdata)
+  //   datasets: [
+  //     {
+  //       type: "line",
+  //       label: "daily data",
+  //       borderColor: "#ff0000",
+  //       data: [
+  //         {x: 'hvlwgv', y: 11},
+  //         {x: 'hvlegv', y: 12},
+  //         {x: 'hvdwgv', y: 13},
+  //         {x: 'hvlwv', y: 14},
+  //       ]
+  //     }
+  //   ]
+  // };
+  
+
 
   
+///////////////////////// Fetching data from API  //////////
 
   const fetchSalesData = async () => {
     const res = await fetch(
@@ -101,7 +124,7 @@ function App() {
     setSalesData(data);
     setIsLoading(false);
   };
-  
+  ////////////////////////////////////////////////////////
 
   return (
     <div className='App'>
@@ -112,8 +135,8 @@ function App() {
         nextPage={nextPage}
         prevPage={prevPage}
         filterProducts={filterProducts}
+        // linechartdata={linechartdata}
       />
-      <Barchart />
     </div>
   );
 }
