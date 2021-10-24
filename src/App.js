@@ -51,10 +51,10 @@ function App() {
   const tech = salesData.filter((sales) => sales.Category === "Technology");
   const techLen = tech.length;
 
-  // const xdata = salesData.map(sales => sales['Order Date'])
 
-  // const ydata = salesData.map(sales => sales['Profit'])
-
+  const myData = salesData.map(sales => {
+    return {x: sales['Order Date'], y: sales['Profit']}
+  }).sort((a, b)=> new Date(a.x) - new Date(b.x) )
 
 
   ///////////// useEffect  /////////////////////
@@ -86,22 +86,17 @@ function App() {
 // ///////////////////////////////////////////////////
 
 
-  // const linechartdata = {
-  //   // console.log(xdata)
-  //   datasets: [
-  //     {
-  //       type: "line",
-  //       label: "daily data",
-  //       borderColor: "#ff0000",
-  //       data: [
-  //         {x: 'hvlwgv', y: 11},
-  //         {x: 'hvlegv', y: 12},
-  //         {x: 'hvdwgv', y: 13},
-  //         {x: 'hvlwv', y: 14},
-  //       ]
-  //     }
-  //   ]
-  // };
+  const linechartdata = {
+    // console.log(xdata)
+    datasets: [
+      {
+        type: "line",
+        label: "Profit made on sale",
+        borderColor: "#ff0000",
+        data: myData
+      }
+    ]
+  };
   
 
 
@@ -135,7 +130,7 @@ function App() {
         nextPage={nextPage}
         prevPage={prevPage}
         filterProducts={filterProducts}
-        // linechartdata={linechartdata}
+        linechartdata={linechartdata}
       />
     </div>
   );

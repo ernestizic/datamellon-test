@@ -6,33 +6,12 @@ const Linechart = ({linechartdata}) => {
     <div style={styles}>
       <Line 
         data={linechartdata} 
-        options={lineOptions} 
+        options={{}} 
     />
     </div>
   );
 };
 
-const lineOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-  
-    tooltips: {
-      mode: "x",
-      intersect: false
-    },
-  
-    scales: {
-      xAxes: [
-        {
-          parsing: false,
-          type: "time",
-          time: {
-            unit: "hours"
-          }
-        }
-      ]
-    }
-  };
 
 const styles = {
   fontFamily: "sans-serif",
