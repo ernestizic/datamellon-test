@@ -47,6 +47,13 @@ function App() {
     setSalesDataCopy([...salesDataCopy.sort((a, b)=> b.Profit - a.Profit)])
   }
 
+  const sortYearAsc =()=> {
+    setSalesDataCopy([...salesDataCopy.sort((a, b)=> new Date(a['Order Date']) - new Date(b['Order Date']) )])
+  }
+  const sortYearDec =()=> {
+    setSalesDataCopy([...salesDataCopy.sort((a, b)=> new Date(b['Order Date']) - new Date(a['Order Date']) )])
+  }
+
 
 
   const fur = salesData.filter((sales) => sales.Category === "Furniture");
@@ -142,6 +149,8 @@ function App() {
         salesData={salesData}
         sortasc={sortasc}
         sortdec={sortdec}
+        sortYearAsc={sortYearAsc}
+        sortYearDec={sortYearDec}
       />
     </div>
   );

@@ -16,7 +16,9 @@ const Dashboard = ({
   linechartdata,
   salesData,
   sortasc,
-  sortdec
+  sortdec,
+  sortYearAsc,
+  sortYearDec
 }) => {
   const handleChange = (e) => {
     filterProducts(e);
@@ -68,7 +70,10 @@ const Dashboard = ({
             <table className='table table-striped'>
               <thead>
                 <tr>
-                  <th>Year </th>
+                  <th>Year 
+                    <BsArrowUp className='arrow' onClick={sortYearAsc} /> 
+                    <BsArrowDown className='arrow' onClick={sortYearDec} /> 
+                  </th>
                   <th>Country</th>
                   <th>Category</th>
                   <th>Product Name</th>
