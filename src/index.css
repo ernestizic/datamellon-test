@@ -45,6 +45,13 @@ button{
 .filter-div{
   padding: 40px 0;
 }
+.arrow:hover{
+  cursor: pointer;
+  color: #000;
+}
+.arrow{
+  color: grey;
+}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .buttons{

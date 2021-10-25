@@ -1,7 +1,10 @@
 import React from "react";
 import Barchart from "./Barchart";
+// import CompositeBarchart from "./CompositeBarchart";
 import Linechart from "./Linechart";
 import Piechart from "./Piechart";
+import { BsArrowDown, BsArrowUp } from 'react-icons/bs';
+
 
 const Dashboard = ({
   chartData,
@@ -10,11 +13,13 @@ const Dashboard = ({
   nextPage,
   prevPage,
   filterProducts,
-  linechartdata
+  linechartdata,
+  salesData,
+  sortasc,
+  sortdec
 }) => {
-
   const handleChange = (e) => {
-    filterProducts(e)
+    filterProducts(e);
   };
   return (
     <div className='chart-list'>
@@ -33,6 +38,7 @@ const Dashboard = ({
             <div className='col-md-6 bar'>
               <Barchart chartData={chartData} />
             </div>
+
             <div className='col-md-6 pie'>
               <Piechart chartData={chartData} />
             </div>
@@ -41,6 +47,9 @@ const Dashboard = ({
           <div className='container linechart-div'>
             <Linechart linechartdata={linechartdata} />
           </div>
+          {/* <div>
+            <CompositeBarchart salesData={salesData} />
+          </div> */}
 
           <div className='table-div'>
             <div className='filter-div'>
@@ -59,18 +68,21 @@ const Dashboard = ({
             <table className='table table-striped'>
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th>Year </th>
                   <th>Country</th>
                   <th>Category</th>
                   <th>Product Name</th>
                   <th>Quantity</th>
-                  <th>Profit</th>
+                  <th>Profit 
+                    <BsArrowUp className='arrow' onClick={sortasc} /> 
+                    <BsArrowDown className='arrow' onClick={sortdec} /> 
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {currentData.map((item) => (
                   <tr key={item["Order ID"]}>
-                    <td>{item["Row ID"]}</td>
+                    <td>{item["Order Date"]}</td>
                     <td>{item.Country}</td>
                     <td>{item.Category}</td>
                     <td>{item["Product Name"]}</td>

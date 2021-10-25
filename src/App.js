@@ -40,6 +40,13 @@ function App() {
     }
   }
 
+  const sortasc =()=> {
+    setSalesDataCopy([...salesDataCopy.sort((a, b)=> a.Profit - b.Profit)])
+  }
+  const sortdec =()=> {
+    setSalesDataCopy([...salesDataCopy.sort((a, b)=> b.Profit - a.Profit)])
+  }
+
 
 
   const fur = salesData.filter((sales) => sales.Category === "Furniture");
@@ -86,8 +93,8 @@ function App() {
 // ///////////////////////////////////////////////////
 
 
+// Line chart data
   const linechartdata = {
-    // console.log(xdata)
     datasets: [
       {
         type: "line",
@@ -97,7 +104,8 @@ function App() {
       }
     ]
   };
-  
+  // //////////////////////////////////////////
+
 
 
   
@@ -131,6 +139,9 @@ function App() {
         prevPage={prevPage}
         filterProducts={filterProducts}
         linechartdata={linechartdata}
+        salesData={salesData}
+        sortasc={sortasc}
+        sortdec={sortdec}
       />
     </div>
   );
